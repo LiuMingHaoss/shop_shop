@@ -28,15 +28,15 @@ class GoodsController extends AdminController
 
         $grid->column('goods_id', __('Goods id'));
         $grid->column('goods_name', __('Goods name'));
-        $grid->column('self_price', __('Self price'));
-        $grid->column('market_price', __('Market price'));
-        $grid->column('goods_num', __('Goods num'));
-
+        $grid->column('goods_desc', __('Goods desc'));
         $grid->column('is_up', __('Is up'));
         $grid->column('goods_img')->display(function($img){
-            return '<img src="/goodsImg/'.$img.'" width="40" height="40">';
+            return '<img src=/storage/'.$img.' weith="40" height="40">';
         });
 
+        $grid->column('status', __('Status'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
         $grid->actions(function ($actions) {
             $actions->add(new Replicate);
         });
@@ -52,17 +52,14 @@ class GoodsController extends AdminController
     protected function detail($id)
     {
         $show = new Show(GoodsModel::findOrFail($id));
-
         $show->field('goods_id', __('Goods id'));
         $show->field('goods_name', __('Goods name'));
-        $show->field('self_price', __('Self price'));
-        $show->field('market_price', __('Market price'));
-        $show->field('goods_num', __('Goods num'));
         $show->field('goods_desc', __('Goods desc'));
         $show->field('is_up', __('Is up'));
         $show->field('goods_img', __('Goods img'));
-        $show->field('create_time', __('Create time'));
         $show->field('status', __('Status'));
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -75,16 +72,10 @@ class GoodsController extends AdminController
     protected function form()
     {
         $form = new Form(new GoodsModel);
-
-        $form->number('goods_id', __('Goods id'));
         $form->text('goods_name', __('Goods name'));
-        $form->decimal('self_price', __('Self price'));
-        $form->decimal('market_price', __('Market price'));
-        $form->number('goods_num', __('Goods num'));
         $form->textarea('goods_desc', __('Goods desc'));
         $form->switch('is_up', __('Is up'));
-        $form->text('goods_img', __('Goods img'));
-        $form->number('create_time', __('Create time'));
+        $form->file('goods_img', __('Goods img'));
         $form->number('status', __('Status'));
 
         return $form;

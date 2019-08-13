@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/goods/goodsList', 'GoodsController@goodsList');    //商品列表
 Route::get('/goods/goodsDesc', 'GoodsController@goodsDesc');    //商品详情
+Route::post('/goods/goodsSku', 'GoodsController@goodsSku');    //商品sku
 
 Route::post('/cart/addCart', 'CartController@addCart');         //加入购物车
 Route::get('/cart/cartList', 'CartController@cartList');         //购物车列表

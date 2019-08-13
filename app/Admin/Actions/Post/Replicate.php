@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Replicate extends RowAction
 {
-    public $name = 'sku管理';
+    public $name = 'SKU';
 
     public function href()
     {

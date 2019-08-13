@@ -6,20 +6,25 @@ use Illuminate\Http\Request;
 use App\Model\GoodsModel;
 use Illuminate\Support\Facades\Auth;
 use App\Model\CartModel;
+use App\Model\SkuModel;
 class CartController extends Controller
 {
     /**
      * 添加购物车
      */
-    public function addCart()
+    public function addCart(Request $request)
     {
-        $goods_id=$_POST['goods_id'];   //获取商品id
-        $num=$_POST['num'];             //获取加入购物车数量
-        $goodsData=GoodsModel::where('goods_id',$goods_id)->first()->toArray();     //根据id查询该商品信息
+        $sku_id=$request->input('sku_id');   //获取商品id
+        $num=$request->input('num');             //获取加入购物车数量
+        $goodsData=SkuModel::where('id',$sku_id)
+            ->leftjoin('shop_goods','goods_sku.goods_id','=','shop_goods.goods_id')
+            ->first()
+            ->toArray();     //根据id查询该商品信息
 
         //加入购物车数据
         $addCart=[
-            'goods_id'=>$goods_id,
+            'goods_id'=>$goodsData['goods_id'],
+            'goods_sn'=>$goodsData['goods_sn'],
             'buy_number'=>$num,
             'goods_name'=>$goodsData['goods_name'],
             'goods_price'=>$goodsData['self_price'],

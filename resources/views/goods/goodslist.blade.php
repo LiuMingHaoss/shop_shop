@@ -74,22 +74,18 @@
             <table>
                 <tr>
                     <th>商品名称</th>
-                    <th>商品价格</th>
-                    <th>库存</th>
                     <th>是否上架</th>
                     <th>操作</th>
                 </tr>
                 @foreach($data as $k => $v)
                 <tr>
                     <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['self_price']}}</td>
-                    <td>{{$v['goods_num']}}</td>
                     @if($v['is_up']==1)
                         <td>√</td>
                     @else
                         <td>×</td>
                     @endif
-                    <td><a href="javascript:;" class="addCart" goods_id="{{$v['goods_id']}}">加入购物车</a></td>
+                    <td><a href="/goods/goodsDesc?id={{$v['goods_id']}}">详情</a></td>
                 </tr>
                 @endforeach
             </table>
