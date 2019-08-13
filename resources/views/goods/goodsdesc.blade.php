@@ -71,22 +71,26 @@
     <div class="content">
 
 
-            <table>
-                <tr>
-                    <th>商品名称</th>
-                    <th>商品价格</th>
-                    <th>库存</th>
-                    <th>是否上架</th>
-                </tr>
-                @foreach($data as $k => $v)
-                <tr>
-                    <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['goods_name']}}</td>
-                    <td>{{$v['goods_name']}}</td>
-                </tr>
-                @endforeach
-            </table>
+        <table>
+            <tr>
+                <th>商品名称：</th>
+                <td>{{$data['goods_name']}}</td>
+            </tr>
+            <tr>
+                <th>商品价格：</th>
+                <td>{{$data['self_price']}}</td>
+            </tr>
+            <tr>
+                <th>商品库存：</th>
+                <td>{{$data['goods_num']}}</td>
+            </tr>
+
+            <tr>
+                <th>商品名称</th>
+                <td>{{$data['goods_name']}}</td>
+            </tr>
+
+        </table>
 
 
     </div>

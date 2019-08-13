@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class GoodsModel extends Model
 {
     public $table='shop_goods';
+    public $primaryKey='goods_id';
 }
