@@ -8,6 +8,8 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use App\Admin\Actions\Post\Replicate;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 class GoodsController extends AdminController
 {
     /**
@@ -79,5 +81,39 @@ class GoodsController extends AdminController
         $form->number('status', __('Status'));
 
         return $form;
+    }
+
+    public function store()
+    {
+        $data=$_POST;
+        unset($data['_previous_']);
+        unset($data['_token']);
+        if($data['is_up']=='on'){
+            $data['is_up']=1;
+        }else{
+            $data['is_up']=2;
+        }
+
+        $goods_id=GoodsModel::insertGetId($data);
+        $key="h:phpinfo:goods:".$goods_id;
+        Redis::hMset($key,$data);
+
+    }
+
+    public function update($id)
+    {
+        $data=$_POST;
+        unset($data['_method']);
+        unset($data['_token']);
+        unset($data['_previous_']);
+        if($data['is_up']=='on'){
+            $data['is_up']=1;
+        }else{
+            $data['is_up']=2;
+        }
+        $res=GoodsModel::where('goods_id',$id)->update($data);
+        $key="h:phpinfo:goods:".$id;
+        Redis::hMset($key,$data);
+
     }
 }

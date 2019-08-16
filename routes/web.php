@@ -34,3 +34,8 @@ Route::get('/order/orderList', 'OrderController@orderList');         //订单列
 Route::get('/order/pay', 'PayController@pay');         //去支付
 Route::get('/order/Alireturn', 'PayController@Alireturn');         //同步回调
 Route::post('/order/notify', 'PayController@Alireturn');         //异步回调
+
+
+
+
+Route::get('/test', 'Test\TestController@test');         //测试

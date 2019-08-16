@@ -23,6 +23,7 @@ class VerifyCsrfToken extends Middleware
         '/cart/cartUpt',
         '/cart/cartDel',
         '/order/*',
-        '/goods/*'
+        '/goods/*',
+        '/admin/*'
     ];
 }

@@ -201,10 +201,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User operation log setting
+    | User operation logs setting
     |--------------------------------------------------------------------------
     |
-    | By setting this option to open or close operation log in laravel-admin.
+    | By setting this option to open or close operation logs in laravel-admin.
     |
     */
     'operation_log' => [
@@ -217,7 +217,7 @@ return [
         'allowed_methods' => ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'],
 
         /*
-         * Routes that will not log to database.
+         * Routes that will not logs to database.
          *
          * All method to path like: admin/auth/logs
          * or specific method to path like: get:admin/auth/logs.

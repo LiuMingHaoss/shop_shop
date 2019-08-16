@@ -73,12 +73,14 @@
 
         <table>
             <tr>
+                <th>订单id</th>
                 <th>订单号</th>
                 <th>价格</th>
                 <th>操作</th>
             </tr>
             @foreach($data as $k => $v)
                 <tr>
+                    <td>{{$v['id']}}</td>
                     <td>{{$v['order_no']}}</td>
                     <td>{{$v['order_amount']}}</td>
                     <td><a href="/order/pay?order_id={{$v['id']}}" class="pay">去支付</a></td>

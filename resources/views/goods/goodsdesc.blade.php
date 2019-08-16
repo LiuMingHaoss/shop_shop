@@ -61,18 +61,15 @@
         .m-b-md {
             margin-bottom: 30px;
         }
-        li{
+        .ul1 li{
             list-style:none;
-
-        }
-        .sku{
             float:left;
             width:50px;
             height:20px;
             border :1px solid red;
             cursor:pointer;
-
         }
+
     </style>
 </head>
 <body>
@@ -92,11 +89,15 @@
             <tr>
                 <th>颜色</th>
                 <td>
-                    @foreach($sku as $k=>$v)
-                  <li class="sku" sku_id="{{$v['id']}}">{{$v['color']}}</li>
-                    @endforeach
+                    <ul class="ul1">
+                        @foreach($sku as $k=>$v)
+                             <li class="sku" sku_id="{{$v['id']}}">{{$v['color']}}</li>
+                        @endforeach
+                    </ul>
                 </td>
             </tr>
+
+
 
         </table>
         <hr>
@@ -133,7 +134,7 @@
                 {num:num,sku_id:sku_id},
                 function(res)
                 {
-                    // console.log(res);
+                    // console.logs(res);
                     if(res=='ok')
                     {
                         alert('添加购物车成功');
