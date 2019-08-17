@@ -51,7 +51,7 @@ class OrderController extends Controller
 
         $where=[
           'uid'=>Auth::id(),
-          'is_del'=>1
+          'status'=>1
         ];
         $orderList=OrderModel::where($where)->get();
 //        $orderList=json_encode($orderList);
